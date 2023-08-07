@@ -32,9 +32,9 @@ export default function EditItemQuantityButton({
                   quantity: type === 'plus' ? item.quantity + 1 : item.quantity - 1
                 });
 
-          if (error && error?.cause) {
-            alert(error);
-            return;
+          if (error) {
+            // Trigger the error boundary in the root error.js
+            throw new Error(error.toString());
           }
 
           router.refresh();

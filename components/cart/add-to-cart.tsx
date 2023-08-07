@@ -46,9 +46,8 @@ export function AddToCart({
         startTransition(async () => {
           const response = await addItem(isBigCommerceAPI, selectedProductId!, selectedVariantId);
 
-          if (typeof response !== 'string') {
-            alert(response);
-            return;
+          if (response instanceof Error) {
+            throw response;
           }
 
           router.refresh();
